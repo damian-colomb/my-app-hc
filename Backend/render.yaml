@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: endoscopia-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://neondb_owner:npg_b8pZtklNOjf2@ep-cold-art-aczgjemi-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require
+      - key: SUPABASE_URL
+        value: https://ipewzpxsrayjfhkxxmwl.supabase.co
+      - key: SUPABASE_SERVICE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlwZXd6cHhzcmF5amZoa3h4bXdsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MzQ4Nzg3NCwiZXhwIjoyMDY5MDYzODc0fQ.YDKQNKQJwn1PQ03hlQdKiDsGOXfGdZqJWMxv98WMQbs
+      - key: ENV
+        value: prod
+      - key: JWT_SECRET_KEY
+        value: mi_clave_secreta_super_segura_para_produccion_2024
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: JWT_EXPIRE_MINUTES
+        value: 60
